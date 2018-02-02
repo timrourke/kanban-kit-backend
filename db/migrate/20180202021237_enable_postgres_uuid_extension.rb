@@ -1,5 +1,5 @@
 class EnablePostgresUuidExtension < ActiveRecord::Migration[5.1]
   def change
-		enable_extension 'pgcrpyto'
+		enable_extension 'pgcrypto'
   end
 end
