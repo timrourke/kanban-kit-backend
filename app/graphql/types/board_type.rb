@@ -1,10 +1,10 @@
-Types::ProjectType = GraphQL::ObjectType.define do
-  name "Project"
-	description "A Project"
+Types::BoardType = GraphQL::ObjectType.define do
+  name "Board"
+	description "A kanban board"
 
-	field :id,          !types.String
-	field :title,       !types.String
-	field :description, !types.String
+	field :id, !types.String
+	field :title, !types.String
+	field :description, types.String
 
 	field :createdAt, !types.String do 
 		resolve ->(obj, args, ctx) {
@@ -24,9 +24,9 @@ Types::ProjectType = GraphQL::ObjectType.define do
 		}
 	end
 
-	field :boards, Types::BoardType.to_list_type do
+	field :project, Types::ProjectType do
 		resolve ->(obj, args, ctx) {
-			obj.boards
+			obj.project
 		}
 	end
 end
