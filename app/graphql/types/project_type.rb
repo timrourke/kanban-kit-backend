@@ -1,9 +1,10 @@
-Types::UserType = GraphQL::ObjectType.define do
-  name "User"
-	description "A User"
+Types::ProjectType = GraphQL::ObjectType.define do
+  name "Project"
+	description "A Project"
 
-	field :id, !types.String
-  field :email, !types.String
+	field :id,          !types.String
+	field :title,       !types.String
+	field :description, !types.String
 
 	field :createdAt, !types.String do 
 		resolve ->(obj, args, ctx) {
@@ -17,9 +18,9 @@ Types::UserType = GraphQL::ObjectType.define do
 		}
 	end
 
-	field :projects, Types::ProjectType.to_list_type do
+	field :user, Types::UserType do
 		resolve ->(obj, args, ctx) {
-			obj.projects
+			obj.user
 		}
 	end
 end
