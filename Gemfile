@@ -28,6 +28,9 @@ gem 'puma', '~> 3.7'
 # Install graphql
 gem 'graphql'
 
+# Install simplecov to provide code coverage
+gem 'simplecov', require: false, group: :test
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
