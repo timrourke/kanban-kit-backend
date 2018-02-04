@@ -6,7 +6,7 @@ describe Types::ProjectType do
   it 'should format createdAt to ISO8601' do
     type = Types::ProjectType
     date = Time.utc(2018, 'jan', 7, 4, 23, 11)
-    project = Project.new(created_at: date, updated_at: date)
+    project = Project.new(created_at: date)
 
     createdAt = type.fields['createdAt'].resolve(project, nil, nil)
 
@@ -16,9 +16,9 @@ describe Types::ProjectType do
   it 'should format updatedAt to ISO8601' do
     type = Types::ProjectType
     date = Time.utc(2019, 'feb', 8, 10, 23, 55)
-    project = Project.new(created_at: date, updated_at: date)
+    project = Project.new(updated_at: date)
 
-    updatedAt = type.fields['createdAt'].resolve(project, nil, nil)
+    updatedAt = type.fields['updatedAt'].resolve(project, nil, nil)
 
     expect(updatedAt).to eq '2019-02-08T10:23:55Z'
   end
