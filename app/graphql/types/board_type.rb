@@ -18,15 +18,15 @@ Types::BoardType = GraphQL::ObjectType.define do
     }
   end
 
-  field :user, Types::UserType do
-    resolve ->(obj, args, ctx) {
-      obj.user
-    }
-  end
+  field :user, function:
+    Functions::AssociationSelectingColumns.new(
+      association: 'user',
+      type: Types::UserType
+    )
 
-  field :project, Types::ProjectType do
-    resolve ->(obj, args, ctx) {
-      obj.project
-    }
-  end
+  field :project, function:
+    Functions::AssociationSelectingColumns.new(
+      association: 'project',
+      type: Types::ProjectType
+    )
 end
