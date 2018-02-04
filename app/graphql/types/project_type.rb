@@ -26,6 +26,8 @@ Types::ProjectType = GraphQL::ObjectType.define do
 
 	field :boards, Types::BoardType.to_list_type do
 		resolve ->(obj, args, ctx) {
+			byebug
+			puts ctx.value.inspect
 			obj.boards
 		}
 	end
